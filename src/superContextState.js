@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function useStateObject(usersData) {
+function useSuperContextState(usersData) {
   const [errors, setErrors] = useState([]);
   const [pending, setPending] = useState([]);
 
@@ -43,7 +43,23 @@ function useStateObject(usersData) {
     }
   };
 
-  return [state, setter, asyncSetter, errors, pending];
+  const clearErrors = () => {
+    setErrors([]);
+  };
+
+  const clearPending = () => {
+    setPending([]);
+  };
+
+  return [
+    state,
+    setter,
+    asyncSetter,
+    errors,
+    pending,
+    clearErrors,
+    clearPending,
+  ];
 }
 
-export { useStateObject };
+export { useSuperContextState };

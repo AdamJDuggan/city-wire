@@ -2,7 +2,7 @@ import React from "react";
 import { useConsoleContext, ConsolesProvider } from "./ConsoleContext";
 
 function _Consoles() {
-  const { consoles, add, fetch, fetchFail, errors, pending } =
+  const { consoles, add, fetch, fetchFail, errors, pending, clearErrors } =
     useConsoleContext();
   return (
     <div>
@@ -16,6 +16,7 @@ function _Consoles() {
       {pending && pending.map((p) => <p>{p}</p>)}
       <h5>Errors</h5>
       {errors && errors.map((e) => <p>{e.action}</p>)}
+      {errors.length > 0 && <button onClick={clearErrors}>Clear errors</button>}
     </div>
   );
   {

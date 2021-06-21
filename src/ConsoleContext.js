@@ -1,6 +1,6 @@
-import { useContext, useState, createContext } from "react";
+import { useContext, createContext } from "react";
 import axios from "axios";
-import { useStateObject } from "./superContextState";
+import { useSuperContextState } from "./superContextState";
 
 const INITIAL_STATE = ["Master System", "Mega Drive", "Saturn"];
 const ConsoleContext = createContext();
@@ -11,8 +11,15 @@ function useConsoleContext() {
 }
 
 function ConsolesProvider(props) {
-  const [consoles, setConsoles, setConsolesAsync, errors, pending] =
-    useStateObject(INITIAL_STATE);
+  const [
+    consoles,
+    setConsoles,
+    setConsolesAsync,
+    errors,
+    pending,
+    clearErrors,
+    clearPending,
+  ] = useSuperContextState(INITIAL_STATE);
 
   const add = () => setConsoles([...consoles, "Dreamcast"]);
 
@@ -32,7 +39,16 @@ function ConsolesProvider(props) {
       return [...consoles, responce];
     });
 
-  const value = { consoles, add, fetch, fetchFail, errors, pending };
+  const value = {
+    consoles,
+    add,
+    fetch,
+    fetchFail,
+    errors,
+    pending,
+    clearErrors,
+    clearPending,
+  };
   return <ConsoleContext.Provider value={value} {...props} />;
 }
 

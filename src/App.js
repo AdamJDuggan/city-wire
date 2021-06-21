@@ -1,10 +1,12 @@
 import Consoles from "./Consoles";
+import Todos from "./Todos";
 
 function App() {
   return (
     <div>
       <Consoles />
       <hr />
+      <Todos />
     </div>
   );
 }
