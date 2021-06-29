@@ -2,16 +2,14 @@ import React from "react";
 import { useTodosContext, TodosProvider } from "./TodosContext";
 
 function TodosComponent() {
-  const { todos, add, fetchFail, todoErrors, todoPending, test } =
-    useTodosContext();
+  const { todos, add, todoErrors, todoPending, fetch } = useTodosContext();
 
   return (
     <div>
       <h3>Todos</h3>
       {todos && todos.map((c) => <p>{c}</p>)}
       <button onClick={add}>Add</button>
-      <button onClick={test}>Fetch</button>
-      <button onClick={fetchFail}>Fetch fail</button>
+      <button onClick={fetch}>Fetch</button>
 
       <h5>todoPending</h5>
       {todoPending && todoPending.map((p) => <p>{p}</p>)}

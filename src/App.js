@@ -4,7 +4,7 @@ import Todos from "./Todos";
 function App() {
   return (
     <div>
-      <Consoles />
+      {/* <Consoles /> */}
       <hr />
       <Todos />
     </div>

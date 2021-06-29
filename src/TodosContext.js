@@ -12,7 +12,7 @@ function useTodosContext() {
 
 function TodosProvider(props) {
   const actions = {
-    test: async () => {
+    fetch: async () => {
       const responce = await axios
         .get(`https://jsonplaceholder.typicode.com/todos/1`)
         .then((res) => res.data.title);
@@ -20,32 +20,16 @@ function TodosProvider(props) {
     },
   };
 
-  const [
-    todos,
-    setTodos,
-    setTodosAsync,
-    todoErrors,
-    todoPending,
-    asyncActions,
-  ] = useSuperContextState(INITIAL_STATE, actions);
+  const [todos, setTodos, todoErrors, todoPending, asyncActions] =
+    useSuperContextState(INITIAL_STATE, actions);
 
   const add = () => setTodos([...todos, "Visit Nan"]);
-
-  const fetchFail = () =>
-    setTodosAsync("fetch", async () => {
-      const responce = await axios
-        .get(`https://djsonplaceholder.typicode.com/todos/1`)
-        .then((res) => res.data.title);
-      return [...todos, responce];
-    });
-
-  console.log(asyncActions);
 
   const value = {
     todos,
     add,
     fetch,
-    fetchFail,
+
     todoErrors,
     todoPending,
     ...asyncActions,

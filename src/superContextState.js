@@ -4,9 +4,9 @@ function useSuperContextState(initialState, actions) {
   const [errors, setErrors] = useState([]);
   const [pending, setPending] = useState([]);
 
-  const [state, setState] = useState(initialState);
+  const [state, Setter] = useState(initialState);
 
-  const setter = (payload) => setState(payload);
+  const setState = (payload) => Setter(payload);
 
   const addPending = (action) => {
     if (!pending.find((p) => p === action)) setPending([...pending, action]);
@@ -24,7 +24,7 @@ function useSuperContextState(initialState, actions) {
   const updateState = (action, res) => {
     filterPending(action);
     filterErrors(action);
-    setState(res);
+    Setter(res);
   };
 
   const addError = (action, error) => {
@@ -60,8 +60,7 @@ function useSuperContextState(initialState, actions) {
 
   return [
     state,
-    setter,
-    asyncSetter,
+    setState,
     errors.length > 0 ? errors : null,
     pending.length > 0 ? pending : null,
     asyncActions,
