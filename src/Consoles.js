@@ -16,7 +16,7 @@ function _Consoles() {
       {pending && pending.map((p) => <p>{p}</p>)}
       <h5>Errors</h5>
       {errors && errors.map((e) => <p>{e.action}</p>)}
-      {errors.length > 0 && <button onClick={clearErrors}>Clear errors</button>}
+      {errors && <button onClick={clearErrors}>Clear errors</button>}
     </div>
   );
   {

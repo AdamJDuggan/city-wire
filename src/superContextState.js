@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-function useSuperContextState(usersData) {
+function useSuperContextState(initialState, actions) {
   const [errors, setErrors] = useState([]);
   const [pending, setPending] = useState([]);
 
-  const [state, setState] = useState(usersData);
+  const [state, setState] = useState(initialState);
 
   const setter = (payload) => setState(payload);
 
@@ -51,14 +51,20 @@ function useSuperContextState(usersData) {
     setPending([]);
   };
 
+  const asyncActions = {};
+  if (actions) {
+    for (const [key, value] of Object.entries(actions)) {
+      asyncActions[key] = () => asyncSetter(key, value);
+    }
+  }
+
   return [
     state,
     setter,
     asyncSetter,
-    errors,
-    pending,
-    clearErrors,
-    clearPending,
+    errors.length > 0 ? errors : null,
+    pending.length > 0 ? pending : null,
+    asyncActions,
   ];
 }
 

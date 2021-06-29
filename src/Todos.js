@@ -1,35 +1,16 @@
 import React from "react";
 import { useTodosContext, TodosProvider } from "./TodosContext";
-import axios from "axios";
-
 
 function TodosComponent() {
-  const {
-    todos,
-    add,
-    fetch,
-    fetchFail,
-    todoErrors,
-    todoPending,
-    setTodosAsync,
-  } = useTodosContext();
+  const { todos, add, fetchFail, todoErrors, todoPending, test } =
+    useTodosContext();
+
   return (
     <div>
       <h3>Todos</h3>
       {todos && todos.map((c) => <p>{c}</p>)}
       <button onClick={add}>Add</button>
-      <button
-        onClick={() =>
-          setTodosAsync("fetch", async () => {
-            const responce = await axios
-              .get(`https://jsonplaceholder.typicode.com/todos/1`)
-              .then((res) => res.data.title);
-            return [...todos, responce];
-          })
-        }
-      >
-        Fetch
-      </button>
+      <button onClick={test}>Fetch</button>
       <button onClick={fetchFail}>Fetch fail</button>
 
       <h5>todoPending</h5>
