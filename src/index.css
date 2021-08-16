@@ -85,7 +85,8 @@ button {
   background: white;
 }
 
-span {
+img{
+  height: 20px;
   cursor: pointer;
   padding: 10px;
 }
