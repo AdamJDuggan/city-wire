@@ -58,13 +58,15 @@ function useSuperContextState(initialState, actions) {
     }
   }
 
-  return [
+  return {
     state,
     setState,
-    errors.length > 0 ? errors : null,
-    pending.length > 0 ? pending : null,
+    errors: errors.length > 0 ? errors : null,
+    pending: pending.length > 0 ? pending : null,
+    clearErrors,
+    clearPending,
     asyncActions,
-  ];
+  };
 }
 
 export { useSuperContextState };

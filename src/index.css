@@ -1,7 +1,6 @@
 body {
-  margin: 30px;
-  font-family: "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-    "Helvetica Neue", sans-serif;
+  font-family: "Helvetica", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -9,4 +8,98 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/* Nav */
+.nav {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+/* Todos.js */
+.todos-container {
+  /* width: 100%; */
+  display: flex;
+  justify-content: center;
+}
+.pending {
+  height: 300px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  font-size: 30px;
+  font-weight: bold;
+  color: black;
+}
+
+.header {
+  font-size: 28px;
+  margin-bottom: 50px;
+}
+.todos {
+  display: grid;
+  max-width: 900px;
+}
+
+.todo {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+  padding: 15px 0;
+  margin-bottom: 50px;
+  font-size: 20px;
+}
+
+.todo-checkbox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  border: 1px solid lightgrey;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.todo-checked {
+  position: absolute;
+  border-radius: 50%;
+  height: 80%;
+  width: 80%;
+  background-color: blue;
+}
+.add-todo-form {
+  display: flex;
+  align-items: center;
+  border: 1px solid lightgrey;
+  border-radius: 6px;
+}
+
+button {
+  border: none;
+  background: white;
+}
+
+span {
+  cursor: pointer;
+  padding: 10px;
+}
+
+input {
+  font-size: 20px;
+  border: none;
+  padding: 10px;
+  height: 40px;
+  outline: none;
+  width: 100%;
+}
+
+input:foucs {
+  border: none;
+  outline: none;
 }

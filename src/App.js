@@ -1,11 +1,11 @@
-import Consoles from "./Consoles";
+// Components
 import Todos from "./Todos";
+import Nav from "./Nav";
 
 function App() {
   return (
-    <div>
-      {/* <Consoles /> */}
-      <hr />
+    <div className="app">
+      <Nav />
       <Todos />
     </div>
   );
